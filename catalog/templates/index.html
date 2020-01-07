@@ -17,4 +17,6 @@
     <li><strong>Fictional Genres:</strong> {{ num_available_instance }}</li>
     <li><strong>Books With the in title:</strong> {{ num_authors }}</li>
   </ul>
+
+  <p>You have visited this page {{num_visits}} {% if num_visits == 1 %} time {% else %} times {% endif %}.</p>
 {% endblock %}
