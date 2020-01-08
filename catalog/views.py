@@ -103,3 +103,27 @@ def renew_book_librarian(request, pk):
         'book_instance': book_instance
     }
     return render(request, 'catalog/book_renew_librarian.html', context)
+
+
+# Generic forms i.e class based formms that come out of the box in django
+# When you dont need to many customization on ur forms.
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
+
+from catalog.models import Author
+
+class AuthorCreate(PermissionRequiredMixin, CreateView):
+    permission_required = 'catalog.can_mark_returned'
+    model = Author
+    fields = '__all__'
+    initial = {'date_of_death': '05/01/2018'}
+
+class AuthorUpdate(PermissionRequiredMixin, UpdateView):
+    permission_required = 'catalog.can_mark_returned'
+    model = Author
+    fields = ['first_name', 'last_name', 'date_of_birth', 'date_of_death']
+
+class AuthorDelete(PermissionRequiredMixin, DeleteView):
+    permission_required = 'catalog.can_mark_returned'
+    model = Author
+    success_url = reverse_lazy('authors')
