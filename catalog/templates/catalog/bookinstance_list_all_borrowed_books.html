@@ -5,7 +5,7 @@
     {% if bookinstance_list %}
         {% for bookinstance in bookinstance_list %}
             <li class="{% if bookinstance.is_overdue %}text-danger{% endif %}">
-                <a href="{% url 'book-detail' bookinstance.book.pk %}">{{ bookinstance.book.title }} </a>({{bookinstance.due_back}})-{{bookinstance.borrower}}
+                <a href="{% url 'book-detail' bookinstance.book.pk %}">{{bookinstance.book.title}}</a> ({{ bookinstance.due_back }}) {% if user.is_staff %}- {{ bookinstance.borrower }}{% endif %} {% if perms.catalog.can_mark_returned %}- <a href="{% url 'renew-book-librarian' bookinstance.id %}">Renew</a>  {% endif %}
             </li>
         {% endfor %}
 
