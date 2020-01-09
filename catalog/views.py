@@ -133,3 +133,8 @@ class BookCreate(PermissionRequiredMixin, CreateView):
     model = Book
     fields = '__all__'
     permission_required = 'catalog.can_mark_returned'
+
+class BookUpdate(PermissionRequiredMixin, UpdateView):
+    model = Book
+    fields = '__all__'
+    permission_required = 'catalog.can_mark_returned'
