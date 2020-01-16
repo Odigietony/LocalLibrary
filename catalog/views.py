@@ -33,7 +33,7 @@ from django.views import generic
 
 class BookListView(generic.ListView):
     model = Book
-    paginate_by = 2
+    paginate_by = 10
 
 
 class BookDetailView(generic.DetailView):
@@ -41,7 +41,7 @@ class BookDetailView(generic.DetailView):
 
 class AuthorListView(generic.ListView):
     model = Author
-    paginate_by = 2
+    paginate_by = 10
 
 
 class AuthorDetailView(generic.DetailView):
@@ -52,7 +52,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 class LoanedBooksByUserListView(LoginRequiredMixin,generic.ListView):
     model = BookInstance
-    paginate_by = 2
+    paginate_by = 10
     template_name ='catalog/bookinstance_list_borrowed_user.html'
 
     def get_queryset(self):

@@ -95,10 +95,10 @@ class BookInstance(models.Model):
 
 class Author(models.Model):
     """Model representing an author."""
-    firstname = models.CharField('First Name', max_length=20)
-    lastname = models.CharField('Last Name', max_length=20)
+    firstname = models.CharField('first name', max_length=20)
+    lastname = models.CharField('last name', max_length=20)
     date_of_birth = models.DateField(blank=True, null=True)
-    date_of_death = models.DateField('Died', blank=True, null=True) #blank and null attributes when equals to null signify optional fields
+    date_of_death = models.DateField('died', blank=True, null=True) #blank and null attributes when equals to null signify optional fields
 
     class Meta:
         ordering = ['lastname', 'firstname']
